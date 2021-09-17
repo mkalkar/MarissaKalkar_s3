@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>D3 Project</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+  <svg>
+    <rect x="0" y="0" width="400" height="200" fill="green" />
+  </svg>
+  <!-- activity 2 -->
+  <script>
+
+    d3.select("body").append("h2").text("Dynamic Content");
+
+    var sandwiches = [
+      { name: "Thesis", price: 7.95, size: "large" },
+      { name: "Dissertation", price: 8.95, size: "large" },
+      { name: "Highlander", price: 6.50, size: "small" },
+      { name: "Just Tuna", price: 6.50, size: "small" },
+      { name: "So-La", price: 7.95, size: "large" },
+      { name: "Special", price: 12.50, size: "small" }
+    ];
+
+    var svg = d3.select("body").append("svg")
+      .attr("width", 500)
+      .attr("height", 500);
+
+    svg.selectAll("circle")
+      .data(sandwiches)
+      .enter()
+      .append("circle")
+      .attr("stroke", "black")
+      .style("fill", function(d) {
+          if(d.price < 7)
+            return "purple";
+          else
+            return "pink";
+      })
+      .style("r", function(d) {
+          if(d.size == "large")
+            return 20;
+          else
+            return 10;
+      })
+      .attr("cy", 30)
+      .attr("cx", function(d, index) {
+        return (index * 60 + 20);
+      });
+
+
+
+
+  </script>
+  <!-- from activity one -->
+
+
+  <script src="js/d3.min.js"></script>
+  <script src="js/d3.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
